@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+</head>
+<body>
+<form action="/index/" method="post">
+    {% csrf_token %}
+<table align="center" border="2">
+<h1 align="center">User Details</h1>
+
+{#    <tr>#}
+{#        <td>#}
+{#            {{ reference_id }}#}
+{#        </td>#}
+
+    <tr><td>
+
+            <input type="text" name="name" placeholder="Name" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="text" name="address" placeholder="Address" required>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="number" name="amount" placeholder="Amount" required>
+        </td>
+    </tr>
+    <tr>
+        <td><h4>Tranasaction Type</h4>
+        <h4>Type 1 for paid</h4>
+        <h4>Type 2 for custom</h4>
+        <h4>Type 3 for free</h4>
+            <input type="text" name="trns_type" placeholder="Enter Option">
+            </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="submit" value="save">
+        </td>
+    </tr>
+</table>
+    </form>
+
+
+<table>
+
+
+
+    <table align="center" border="2" bgcolor="#FFF">
+                 <tr>
+                        <td>Transaction id</td>
+                        <td>Name</td>
+                        <td>Adress</td>
+                        <td>Amount</td>
+                        <td>Reference id</td>
+                        <td>Transaction no</td>
+                        <td>Date</td>
+                        <td>Transaction type</td>
+                        <td>Status</td>
+                 </tr>
+                    {% for x in user_details %}
+
+                        <tr>
+                        <td>{{ x.reference_id}}</td>
+                        <td>{{ x.name }}</td>
+                        <td>{{ x.address}}</td>
+                        <td>{{ x.amount }}</td>
+                        <td>{{ x.trans_id }}</td>
+                        <td>{{ x.trans_no }}</td>
+                        <td>{{ x.date }}</td>
+                        <td>{{ x.trans_type }}</td>
+                        <td>{{ x.status }}</td>
+                         </tr>
+
+                {% endfor %}
+             </table>
+
+</table>
+</body>
+</html>
